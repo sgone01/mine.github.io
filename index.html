@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f5f5f5;
+      font-family: 'Arial', sans-serif;
+    }
+
+    #animation-container {
+      position: relative;
+      text-align: center; /* Center text in container */
+    }
+
+    #animation {
+      width: 80%;
+      max-width: 400px;
+      height: auto;
+      display: block; /* Center the image */
+      margin: 0 auto; /* Center the image */
+    }
+
+    #buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    #yesBtn, #noBtn {
+      font-size: 1.2em;
+      padding: 15px 30px;
+      margin: 0 10px;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+    }
+
+    #yesBtn {
+      background: linear-gradient(to right, #4CAF50, #45a049); /* Green gradient */
+      box-shadow: 0px 5px 10px rgba(76, 175, 76, 0.7); /* Green shadow */
+    }
+
+    #noBtn {
+      background: linear-gradient(to right, #d9534f, #c9302c); /* Red gradient */
+      box-shadow: 0px 5px 10px rgba(217, 83, 79, 0.7); /* Red shadow */
+    }
+    
+     #valentine-text, #yay-text {
+      font-size: 2.5em;
+      font-weight: bold;
+      color: black;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+      #animation {
+        width: 90%;
+      }
+
+      #yesBtn, #noBtn {
+        font-size: 16px;
+        padding: 12px 24px;
+        margin: 0 8px;
+      }
+      #valentine-text, #yay-text {
+        font-size: 1.5em;
+      }
+    }
+  </style>
+  <script>
+    function clearContent() {
+    
+    
+      document.body.innerHTML = '<img id="animation" src="https://media.tenor.com/Re3rcuBu4hIAAAAi/love-couple.gif" alt="Animated Image">';
+      let yayText = document.createElement("div");
+      yayText.id = "yay-text";
+      yayText.textContent = "Ok yay!!!";
+      document.body.appendChild(yayText);
+    }
+
+    function adjustButtonSize() {
+      let yesBtn = document.getElementById("yesBtn");
+      let noBtn = document.getElementById("noBtn");
+
+      let currentYesSize = parseFloat(getComputedStyle(yesBtn).fontSize);
+      let currentNoWidth = parseFloat(getComputedStyle(noBtn).width);
+      let currentNoHeight = parseFloat(getComputedStyle(noBtn).height);
+
+      let newYesSize = currentYesSize + 6;
+      let newNoWidth = currentNoWidth - 14;
+      let newNoHeight = currentNoHeight - 14;
+      let noButtonFontSize = (currentNoWidth / currentNoHeight) + 6
+
+      yesBtn.style.fontSize = newYesSize + "px";
+      noBtn.style.width = newNoWidth + "px";
+      noBtn.style.height = newNoHeight + "px";
+      noBtn.style.fontSize = noButtonFontSize + "px";
+    }
+  </script>
+</head>
+<body>
+  <div id="animation-container">
+    <img id="animation" src="https://media1.tenor.com/m/Vy46BTSo3hsAAAAC/bear-love.gif" alt="Animated Image">
+  </div>
+   <div id="valentine-text">Will you be my Valentine?</div>
+  <div id="buttons">
+    <button id="yesBtn" onclick="clearContent()">YES</button>
+    <button id="noBtn" onclick="adjustButtonSize()">NO</button>
+  </div>
+</body>
+</html>
